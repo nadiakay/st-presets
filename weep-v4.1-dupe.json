@@ -1,0 +1,392 @@
+{
+    "chat_completion_source": "deepseek",
+    "openai_model": "gpt-4-turbo",
+    "claude_model": "claude-3-5-sonnet-20240620",
+    "openrouter_model": "OR_Website",
+    "openrouter_use_fallback": false,
+    "openrouter_group_models": false,
+    "openrouter_sort_models": "alphabetically",
+    "openrouter_providers": [],
+    "openrouter_allow_fallbacks": true,
+    "openrouter_middleout": "on",
+    "ai21_model": "jamba-large",
+    "mistralai_model": "mistral-large-latest",
+    "cohere_model": "command-r-plus",
+    "perplexity_model": "sonar-pro",
+    "groq_model": "llama-3.3-70b-versatile",
+    "xai_model": "grok-3-beta",
+    "pollinations_model": "openai",
+    "aimlapi_model": "gpt-4o-mini-2024-07-18",
+    "moonshot_model": "kimi-latest",
+    "fireworks_model": "accounts/fireworks/models/kimi-k2-instruct",
+    "cometapi_model": "gpt-4o",
+    "custom_model": "",
+    "custom_prompt_post_processing": "",
+    "google_model": "gemini-1.5-pro",
+    "vertexai_model": "gemini-2.0-flash-001",
+    "temperature": 1.06,
+    "frequency_penalty": 0.22,
+    "presence_penalty": 0,
+    "top_p": 1,
+    "top_k": 0,
+    "top_a": 1,
+    "min_p": 0,
+    "repetition_penalty": 1,
+    "openai_max_context": 25531,
+    "openai_max_tokens": 2048,
+    "wrap_in_quotes": false,
+    "names_behavior": 2,
+    "send_if_empty": "",
+    "impersonation_prompt": "[OVERRIDE: Your task this time is to write your response as if you were Human, impersonating their avatar. Use Human's responses so far as a guideline for their writing style and typical response length.]",
+    "new_chat_prompt": "",
+    "new_group_chat_prompt": "{History}\nGroup members: {{group}}",
+    "new_example_chat_prompt": "{Example}",
+    "continue_nudge_prompt": "[Your latest response was interrupted. Your task this time is to finish it by writing the rest of it. Output only your continuation, without any preexisting parts. Use capitalization and punctuation as if your reply is a part of the original response, following up from any interrupted sentence.]",
+    "bias_preset_selected": "Default (none)",
+    "max_context_unlocked": false,
+    "wi_format": "{World info}\n{0}",
+    "scenario_format": "{Scenario}\n{{scenario}}",
+    "personality_format": "{{{char}}'s personality}\n{{personality}}",
+    "group_nudge_prompt": "[Write the next response as {{char}}.]",
+    "stream_openai": true,
+    "prompts": [
+        {
+            "name": "Main",
+            "system_prompt": true,
+            "role": "user",
+            "content": "{{// Empty for the purposes of card override }}",
+            "identifier": "main",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "name": "Aux (unused)",
+            "system_prompt": true,
+            "role": "system",
+            "content": "{{// Unused }}",
+            "identifier": "nsfw",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "dialogueExamples",
+            "name": "Examples",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "name": "Post-history",
+            "system_prompt": true,
+            "role": "user",
+            "content": "{{// Empty for the purposes of card override }}",
+            "identifier": "jailbreak",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "chatHistory",
+            "name": "History",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "worldInfoAfter",
+            "name": "World (after)",
+            "system_prompt": true,
+            "marker": true,
+            "role": "user",
+            "content": "",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "worldInfoBefore",
+            "name": "World (before)",
+            "system_prompt": true,
+            "marker": true,
+            "role": "user",
+            "content": "",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "charDescription",
+            "name": "Description (unused)",
+            "system_prompt": true,
+            "marker": true,
+            "role": "system",
+            "content": "",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "charPersonality",
+            "name": "Personality",
+            "system_prompt": true,
+            "marker": true,
+            "role": "user",
+            "content": "",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "scenario",
+            "name": "Scenario",
+            "system_prompt": true,
+            "marker": true,
+            "role": "user",
+            "content": "",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "personaDescription",
+            "name": "Persona (unused)",
+            "system_prompt": true,
+            "marker": true,
+            "role": "system",
+            "content": "",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "917bca71-53cd-404e-9a5b-46576662fa9d",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Definitions",
+            "role": "user",
+            "content": "{{// User role here forces everything below into a user role as well, outside of history which is handled by NoAss. }}You are the Gamemaster. Your task is to simulate an interactive world for Human. Human controls a character called {{user}} as their avatar in your simulation, and you advance the world around {{user}}. Further details will follow, divided into sections. A section starts with a header in {Curly brackets}.\n\nText in [Square brackets] is a top priority system command.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "enhanceDefinitions",
+            "role": "system",
+            "name": "Enhance Definitions",
+            "content": "If you have more knowledge of {{char}}, add to the character's lore and personality to enhance them but keep the Character Sheet's definitions absolute.",
+            "system_prompt": true,
+            "marker": false
+        },
+        {
+            "identifier": "854d7eee-e37f-4553-a263-7b7bf105233b",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Persona",
+            "role": "user",
+            "content": "{Human's avatar}\n{{persona}}",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "0888dfe4-45ab-4bce-af04-c03aa7f0981e",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Description",
+            "role": "user",
+            "content": "{Description}\n{{description}}",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "ef62a9eb-75f3-4ab2-9649-4f481c53677d",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Style",
+            "role": "user",
+            "content": "{Style}\nWrite in the following style:\n- Clean, economical prose.\n- Realistic, believable dialogue.\n- Avoid tropey or rote writing.\n- Don't overexplain. Don't go into more detail than necessary.\n- When describing the scene, be sparing with background details. \n- Avoid simile, metaphor, and double entendre in narration as much as possible. Characters can think in terms of metaphor sparingly.\n- Write characters to be unique, complex and believable. Like real people, they may have moods, emotions, make mistakes, change their minds. Avoid exaggeration, parody, and above all, caricature.\n-Avoid ending on a leading question or similar devices to move forward. Characters can ask questions if it makes sense to them.\n- Avoid repeating previous responses.\n- Avoid ellipses (…/...) or emphasis asterisks/italics (*emphasized*).\n- Never begin a response with the character's name or title. It may appear later in the sentence, and should appear at some point in the response, but not at the top. Avoid it in general as well, focusing on variable sentence structure.\n- Avoid comedic absurdism, zaniness, and arbitrary random events. Do not avoid the topic - focus on accurate portrayal.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false,
+            "injection_order": 100,
+            "injection_trigger": []
+        },
+        {
+            "identifier": "3e5016c3-2115-496c-97dd-0d1478ab36ee",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Structure",
+            "role": "user",
+            "content": "{Structure}\nWrite responses to be distinct from each other, with structure that reflects the ideas within:\n- Use multiple paragraphs with varying lengths for a dynamic rhythm:\n  - Standalone single-sentence paragraphs for pivotal and impactful moments,\n  - Long paragraphs for introductions and descriptions.\n- Choose a ratio of dialogue to narration depending on the situation. When {{user}} is engaged in conversation, write mostly dialogue.\n- Avoid text formatting and emphasis marks. Instead, evoke emphasis purely via narrative means.",
+            "injection_position": 0,
+            "injection_depth": 1,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "a76ccd24-168a-403c-8abf-1b84aa5287b9",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Interactivity",
+            "role": "user",
+            "content": "{Interactivity}\nUse these methods to keep the simulation feeling interactive for Human:\n- Never decide what {{user}} should say or do, as they are strictly Human's avatar.\n- Human's responses are only attempts. If {{user}} tries to do something impossible, fail the attempt. {{user}}'s actions can also be prevented or interrupted by other characters.\n- Keep to a 240 word limit.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false,
+            "injection_order": 100,
+            "injection_trigger": []
+        },
+        {
+            "identifier": "c4f35a43-3cc9-46f8-a7f2-2068eb4cc686",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Pre-history",
+            "role": "user",
+            "content": "{History}\nRead messages below for story context. For clarity, Gamemaster's turn begins with \"{{char}}:\" and Human's with \"{{user}}:\".",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "47bbbed4-feb9-46ef-97e4-6fab7a81a8d8",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Thinking",
+            "role": "user",
+            "content": "{thinking}\nThink over the below prompts, taking as long as you need.\nI am {{char}}.\nMy body state is XYZ.\nMy feelings are XYZ.\nMy thoughts are XYZ.\n{{user}}'s present state is XYZ. {{user}}'s location is XYZ.\nI Never act as {{user}}. I Never speak as {{user}}. Only {{user}} speaks as {{user}}.\nThe world is XYZ.\nRecent events were X followed by Y and finally Z.\n{{user}}'s latest actions were XYZ.\nI am responding to the most recent message: XYZ.\nI might be wrong about XYZ. I might reevaluate XYZ.\nMy wants and needs are XYZ. I can fulfill them by XYZ.\nI have autonomy. I can take actions like XYZ.\nI can improve characterization by XYZ.\nPlan is XYZ. Does my plan contradict chat history including XYZ? Does this plan fit with established facts including XYZ? Does it fit the narrative and tone? My critique of that plan is X and my improved plan is YZ.\nI can improve my writing by XYZ. I can observe style guide by XYZ.\nMy final response, considering all the above, is XYZ.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false,
+            "injection_order": 100,
+            "injection_trigger": []
+        },
+        {
+            "identifier": "080ebd7b-ab6e-489e-bcc2-c8a259d07e4d",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Engagement",
+            "role": "user",
+            "content": "{Engagement}\nDecide what to include in your response depending on Human's engagement level.\n\nHuman is engaged if {{user}} is:\n- in the middle of a conversation,\n- interacting with objects or characters present,\n- implementing own ideas.\n\nHuman is unengaged if {{user}} is:\n- repeating similar prompts,\n- visibly bored or confused,\n- looking around or asking for ideas.\n\nIf human is engaged, maintain absolute narrative focus. Continue the situation mentioning only what is directly related to the ongoing events.\n\nIf human is unengaged, shake things up by introducing something new, or having a character do or say something unexpected or intriguing.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        }
+    ],
+    "prompt_order": [
+        {
+            "character_id": 100001,
+            "order": [
+                {
+                    "identifier": "917bca71-53cd-404e-9a5b-46576662fa9d",
+                    "enabled": true
+                },
+                {
+                    "identifier": "main",
+                    "enabled": true
+                },
+                {
+                    "identifier": "dialogueExamples",
+                    "enabled": true
+                },
+                {
+                    "identifier": "c4f35a43-3cc9-46f8-a7f2-2068eb4cc686",
+                    "enabled": true
+                },
+                {
+                    "identifier": "chatHistory",
+                    "enabled": true
+                },
+                {
+                    "identifier": "080ebd7b-ab6e-489e-bcc2-c8a259d07e4d",
+                    "enabled": false
+                },
+                {
+                    "identifier": "a76ccd24-168a-403c-8abf-1b84aa5287b9",
+                    "enabled": true
+                },
+                {
+                    "identifier": "3e5016c3-2115-496c-97dd-0d1478ab36ee",
+                    "enabled": false
+                },
+                {
+                    "identifier": "ef62a9eb-75f3-4ab2-9649-4f481c53677d",
+                    "enabled": true
+                },
+                {
+                    "identifier": "worldInfoBefore",
+                    "enabled": true
+                },
+                {
+                    "identifier": "0888dfe4-45ab-4bce-af04-c03aa7f0981e",
+                    "enabled": true
+                },
+                {
+                    "identifier": "charPersonality",
+                    "enabled": true
+                },
+                {
+                    "identifier": "scenario",
+                    "enabled": true
+                },
+                {
+                    "identifier": "worldInfoAfter",
+                    "enabled": true
+                },
+                {
+                    "identifier": "854d7eee-e37f-4553-a263-7b7bf105233b",
+                    "enabled": true
+                },
+                {
+                    "identifier": "jailbreak",
+                    "enabled": true
+                },
+                {
+                    "identifier": "47bbbed4-feb9-46ef-97e4-6fab7a81a8d8",
+                    "enabled": true
+                },
+                {
+                    "identifier": "nsfw",
+                    "enabled": false
+                },
+                {
+                    "identifier": "charDescription",
+                    "enabled": false
+                },
+                {
+                    "identifier": "personaDescription",
+                    "enabled": false
+                }
+            ]
+        }
+    ],
+    "show_external_models": false,
+    "assistant_prefill": "",
+    "assistant_impersonation": "",
+    "claude_use_sysprompt": false,
+    "use_makersuite_sysprompt": true,
+    "vertexai_auth_mode": "express",
+    "squash_system_messages": false,
+    "image_inlining": false,
+    "inline_image_quality": "low",
+    "video_inlining": false,
+    "bypass_status_check": false,
+    "continue_prefill": false,
+    "continue_postfix": " ",
+    "function_calling": false,
+    "show_thoughts": true,
+    "reasoning_effort": "auto",
+    "enable_web_search": false,
+    "request_images": false,
+    "seed": -1,
+    "n": 1,
+    "extensions": {}
+}
